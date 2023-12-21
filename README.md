@@ -22,3 +22,14 @@ y_pred <- ifelse(prob_pred > 0.5, 1, 0)
 conf_matrix <- table(Actual = test_set$CLASS, Predicted = as.factor(y_pred))
 
 # Displaying the confusion matrix
+print(conf_matrix)
+
+# Calculate accuracy, precision, and recall
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+precision <- conf_matrix[2, 2] / sum(conf_matrix[, 2])
+recall <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+
+# Display metrics
+cat("Accuracy:", accuracy, "\n")
+cat("Precision:", precision, "\n")
+cat("Recall:", recall, "\n")
